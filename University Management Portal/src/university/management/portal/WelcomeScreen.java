@@ -26,14 +26,14 @@ public class WelcomeScreen extends JFrame implements Runnable {
         
         try{
             
-            Thread.sleep(10);
+            Thread.sleep(5);
         } catch(Exception e) {} 
     }
     }
     public void run() { 
         try {
             
-            Thread.sleep(8000);
+            Thread.sleep(3000);
             setVisible(false); 
             
             new SignIn();
