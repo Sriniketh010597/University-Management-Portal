@@ -3,7 +3,7 @@ package university.management.portal;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
+import java.sql.*; 
 
 public class SignIn extends JFrame implements ActionListener{
 
@@ -62,13 +62,24 @@ public class SignIn extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == signin) {
             
+            String username= signinusername.getText();
+            String password= signinpassword.getText();  
+            String query = "select * from signin where username='"+username+"' and password='"+password+"'";
             
             try {
+                Connectivity conn =new Connectivity();
+                ResultSet result = conn.st.executeQuery(query);
                 
-                
-                
-          
-                
+                if(result.next()) {
+                    setVisible(false);
+                    new ThirdClass();
+                    
+                } else {
+                    
+                    JOptionPane.showMessageDialog(null, "Invalid username or password"); 
+                    setVisible(false); 
+              
+        }       
             } catch (Exception e) {
                 e.printStackTrace();
             }
