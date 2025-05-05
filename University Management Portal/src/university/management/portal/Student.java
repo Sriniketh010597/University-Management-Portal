@@ -160,7 +160,37 @@ public class Student extends JFrame {
     
         
     }
-      public static void main(String [] args){
+        public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == addbutton) {
+            String name = textname.getText();
+            String fname = textfname.getText();
+            String rollno = labelrollnumber.getText();
+            String dob = ((JTextField) datedob.getDateEditor().getUiComponent()).getText();
+            String address = textaddress.getText();
+            String phone = textphone.getText();
+            String email = textemail.getText();
+            String x = textx.getText();
+            String xii = textxii.getText();
+            String aadhar = textaadhar.getText();
+            String course = (String) boxcourse.getSelectedItem();
+            String branch = (String) boxbranch.getSelectedItem();
+            
+            try {
+                String query = "insert into student values('"+name+"', '"+fname+"', '"+rollno+"', '"+dob+"', '"+address+"', '"+phone+"', '"+email+"', '"+x+"', '"+xii+"', '"+aadhar+"', '"+course+"', '"+branch+"')";
+
+                Connectivity conn= new Connectivity();
+                conn.st.executeUpdate(query);
+                
+                JOptionPane.showMessageDialog(null, "Student Details Inserted Successfully");
+                setVisible(false);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            setVisible(false);
+        }
+    }
+    public static void main(String [] args){
         
         new Student(); 
         
